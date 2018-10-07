@@ -22,7 +22,12 @@ ExternalProject_Get_Property(zmalloc INSTALL_DIR)
 MESSAGE( STATUS "zmalloc INSTALL_DIR:        " ${INSTALL_DIR} )
 
 include_directories(${INSTALL_DIR}/include)
+
 link_directories(${INSTALL_DIR}/libstatic)
+
+
+add_dependencies(${PROJECT_NAME} zmalloc)
+target_link_libraries(${PROJECT_NAME} -lzmalloc)
 
 
 install(TARGETS sds
